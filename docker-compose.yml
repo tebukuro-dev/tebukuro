@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: ./dashboard
+      target: dev
+    command: bin/dev
+    entrypoint: ./entrypoint.sh
+    volumes:
+      - ./dashboard:/app:cached
+      - bundle_ruby:/app/vendor/
+      - bundle_node:/app/node_modules
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+    environment:
+      TEBUKURO_DATABASE_HOST: db
+      TEBUKURO_DATABASE_USERNAME: postgres
+      TEBUKURO_DATABASE_PASSWORD: password
+    depends_on:
+      - db
+  db:
+    image: postgres:14-bullseye
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+
+volumes:
+  bundle_ruby:
+  bundle_node:
