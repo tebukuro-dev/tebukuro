@@ -21,6 +21,14 @@ services:
       TEBUKURO_DATABASE_PASSWORD: password
     depends_on:
       - db
+  web-component:
+    image: node:18.12-bullseye-slim
+    working_dir: /web-component
+    command: yarn serve
+    volumes:
+      - ./web-component:/web-component
+    ports:
+      - 8000:8000
   db:
     image: postgres:14-bullseye
     restart: always
