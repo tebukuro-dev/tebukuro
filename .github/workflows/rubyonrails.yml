@@ -1,0 +1,68 @@
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby on Rails CI"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+defaults:
+  run:
+    working-directory: dashboard
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_USER: tebukuro
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      TEBUKURO_DATABASE_HOST: localhost
+      TEBUKURO_DATABASE_USERNAME: tebukuro
+      TEBUKURO_DATABASE_PASSWORD: password
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          working-directory: dashboard
+          ruby-version: '3.1.2'
+          bundler-cache: true
+      - name: Create a database
+        run: bin/rails db:create
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+      - name: Run tests
+        run: bin/rake
+
+  # lint:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Checkout code
+  #      uses: actions/checkout@v3
+  #    - name: Install Ruby and gems
+  #      uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
+  #      with:
+  #        bundler-cache: true
+  #    # Add or replace any other lints here
+  #    - name: Security audit dependencies
+  #      run: bin/bundler-audit --update
+  #    - name: Security audit application code
+  #      run: bin/brakeman -q -w2
+  #    - name: Lint Ruby files
+  #      run: bin/rubocop --parallel
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
