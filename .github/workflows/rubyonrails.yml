@@ -35,6 +35,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
+          working-directory: dashboard
           ruby-version: '3.1.2'
           bundler-cache: true
       - name: Set up database schema
