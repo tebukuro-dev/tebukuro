@@ -35,9 +35,11 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          working-directory: ./dashboard
+          working-directory: dashboard
           ruby-version: '3.1.2'
           bundler-cache: true
+      - name: Create a database
+        run: bin/rails db:create
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
@@ -59,3 +61,4 @@ jobs:
   #      run: bin/brakeman -q -w2
   #    - name: Lint Ruby files
   #      run: bin/rubocop --parallel
+  
