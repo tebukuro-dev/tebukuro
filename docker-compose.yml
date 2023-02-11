@@ -34,6 +34,13 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: password
+  plantuml:
+    image: plantuml/plantuml-server
+    restart: always
+    ports:
+      - 8080:8080
+    profiles:
+      - docs
 
 volumes:
   bundle_ruby:
