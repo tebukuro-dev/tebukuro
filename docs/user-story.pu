@@ -1,0 +1,21 @@
+@startuml
+|o|Organizers
+|t|Tebukuro
+|p|Participants
+|o|
+start
+:Plan an event;
+:Create an event site;
+|t|
+:Register event tickets;
+|o|
+:Place a register button on the event site;
+|p|
+:Visit the event site;
+:Purchase tickets on the event site;
+|t|
+:Check-in with QR Code;
+|p|
+:Enjoy the event;
+end
+@enduml
