@@ -12,6 +12,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.16.tgz#284522de76abe951e4ed2bd24a467e8d49c67933"
   integrity sha512-SDLfP1uoB0HZ14CdVYgagllgrG7Mdxhkt4jDJOKl/MldKrkQ6vDJMZKl2+5XsEY/Lzz37fjgLQoJBGuAw/x8kQ==
 
+"@r2wc/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@r2wc/core/-/core-1.0.0.tgz#5724bf472769ffe4157528bd10f62b9aada36098"
+  integrity sha512-P/P1YXpCXESnJKxFGXDZFrldov3T5wqeJSgQNWMgTkuV4CA9C+gVwv2guadkB7h5PuFyJxaLLbK6vl2VAUltpA==
+
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -580,10 +585,12 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-to-webcomponent@^2.0.0-alpha.0:
-  version "2.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/react-to-webcomponent/-/react-to-webcomponent-2.0.0-alpha.0.tgz#33d95bcec0ae3aba84b12613b47d5ceb5af5eb38"
-  integrity sha512-TFTtKPf3Wpa9b/zcgGAlZIYtVuM0rFVb49MYlZcM8Hipg7srB2/XoCE2792LU/EXP26ZLsXFmUVjwOy2pFrotQ==
+react-to-webcomponent@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-to-webcomponent/-/react-to-webcomponent-2.0.0.tgz#45be93e3aafa00f032519b2521adff8cd986235f"
+  integrity sha512-/gD0HgmO+yDg1kSfIktq04WlGVglEcun11xNAy8zMnSMtOZ+t6OF0bJVtHlIcT8nGU+XGwycY2t7prOaO+BWXg==
+  dependencies:
+    "@r2wc/core" "^1.0.0"
 
 react@^18.2.0:
   version "18.2.0"
