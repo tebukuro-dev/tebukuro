@@ -1,4 +1,4 @@
-FROM ruby:3.1-slim-bullseye as base
+FROM ruby:3.2.2-slim-bullseye as base
 
 ENV TZ=Asia/Tokyo
 ENV BUNDLE_JOBS=4
