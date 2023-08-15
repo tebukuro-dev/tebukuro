@@ -8,3 +8,9 @@
 
   <%= button_to "Destroy this event", @event, method: :delete %>
 </div>
+
+<div>
+  <%= render @event.event_tickets %>
+</div>
+
+<%= link_to "New Event Ticket", new_event_event_ticket_path(@event) %>
