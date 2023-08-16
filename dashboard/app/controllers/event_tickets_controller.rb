@@ -4,7 +4,7 @@ class EventTicketsController < ApplicationController
 
   # GET /event_tickets/new
   def new
-    @event_ticket = EventTicket.new(event: @event)
+    @event_ticket = EventTicket.new(event: @event, limit_number: 1)
   end
 
   # GET /event_tickets/1/edit
@@ -57,7 +57,7 @@ class EventTicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_ticket_params
-      params.require(:event_ticket).permit(:name)
+      params.require(:event_ticket).permit(:name, :limit_number)
     end
 
     def event_ticket_attributes
