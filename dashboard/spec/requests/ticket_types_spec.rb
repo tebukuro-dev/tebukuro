@@ -34,7 +34,7 @@ RSpec.describe "/ticket_types", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_event_event_ticket_url(event)
+      get new_event_ticket_type_url(event)
       expect(response).to be_successful
     end
   end
