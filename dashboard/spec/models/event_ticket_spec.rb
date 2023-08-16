@@ -16,5 +16,13 @@ RSpec.describe EventTicket, type: :model do
 
       it { is_expected.to be_invalid }
     end
+
+    context 'when name is not unique' do
+      before do
+        EventTicket.create(name: ticket_name, event: event)
+      end
+
+      it { is_expected.to be_invalid }
+    end
   end
 end
