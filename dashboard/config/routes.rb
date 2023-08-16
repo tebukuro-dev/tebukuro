@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :events do
-    resources :event_tickets, except: %i[ index show ]
     resources :ticket_types, except: %i[ index show ]
   end
   resources :tickets
