@@ -3,7 +3,7 @@ class TicketTypesController < ApplicationController
 
   # GET /ticket_types/new
   def new
-    @ticket_type = TicketType.new(event: event, limit_number: 1)
+    @ticket_type = event.ticket_types.build(limit_number: 1)
   end
 
   # GET /ticket_types/1/edit
@@ -12,7 +12,7 @@ class TicketTypesController < ApplicationController
 
   # POST /ticket_types or /ticket_types.json
   def create
-    @ticket_type = TicketType.new(create_ticket_type_params)
+    @ticket_type = event.ticket_types.build(ticket_type_params)
 
     respond_to do |format|
       if @ticket_type.save
@@ -51,16 +51,12 @@ class TicketTypesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket_type
-      @ticket_type = TicketType.find_by!(id: params[:id], event_id: params[:event_id])
+      @ticket_type = event.ticket_types.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def ticket_type_params
       params.require(:ticket_type).permit(:name, :limit_number)
-    end
-
-    def create_ticket_type_params
-      ticket_type_params.merge(event: event)
     end
 
     def event
