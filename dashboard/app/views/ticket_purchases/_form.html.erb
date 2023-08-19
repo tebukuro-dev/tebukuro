@@ -1,0 +1,27 @@
+<%= form_with(model: [ event, ticket_purchase ]) do |form| %>
+  <% if ticket_purchase.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(ticket_purchase.errors.count, "error") %> prohibited this ticket_purchase from being saved:</h2>
+
+      <ul>
+        <% ticket_purchase.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :ticket_type_id, style: "display: block" %>
+    <%= form.collection_select :ticket_type_id, event.ticket_types, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :number_of_purchased, style: "display: block" %>
+    <%= form.number_field :number_of_purchased %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
