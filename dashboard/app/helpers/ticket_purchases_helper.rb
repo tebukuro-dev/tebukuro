@@ -1,0 +1,2 @@
+module TicketPurchasesHelper
+end
